@@ -1,15 +1,6 @@
-export interface DannyStatus {
-  isBusy: boolean;
-  currentSessionId?: string;
-  isPlaying?: boolean;
-}
-
-export const danny: DannyStatus = {
-  isBusy: false,
-  currentSessionId: null,
-};
-
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+
+import { danny } from './index';
 
 export default function handler(req, res) {
   if (req.method === 'POST') {
