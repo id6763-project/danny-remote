@@ -3,7 +3,6 @@ import Cors from 'cors';
 export interface DannyStatus {
   isBusy: boolean;
   currentSessionId?: string;
-  isPlaying?: boolean;
 }
 
 export const danny: DannyStatus = {
@@ -39,7 +38,6 @@ export default async function handler(req, res) {
     res.status(200).send(danny);
   } else if (req.method === 'POST') {
     danny.isBusy = false;
-    danny.isPlaying = false;
     danny.currentSessionId = null;
 
     res.status(200).send(danny);
