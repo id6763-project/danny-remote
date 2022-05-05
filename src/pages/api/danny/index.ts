@@ -13,7 +13,7 @@ export const danny: DannyStatus = {
 
 // Initializing the cors middleware
 const cors = Cors({
-  methods: ['GET', 'HEAD'],
+  methods: ['GET', 'POST', 'HEAD'],
 });
 
 // Helper method to wait for a middleware to execute before continuing
@@ -36,6 +36,12 @@ export default async function handler(req, res) {
   await runMiddleware(req, res, cors);
 
   if (req.method === 'GET') {
+    res.status(200).send(danny);
+  } else if (req.method === 'POST') {
+    danny.isBusy = false;
+    danny.isPlaying = false;
+    danny.currentSessionId = null;
+
     res.status(200).send(danny);
   }
 }
