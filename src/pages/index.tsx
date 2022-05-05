@@ -32,11 +32,12 @@ export default class Home extends Component<
           danny,
         }))
         .then(({ session, danny }) => this.setState({ session, danny }))
+        .then(() => {})
     );
   }
 
   playDanny() {
-    Api.invoke<DannyStatus>('danny', {
+    Api.invoke<DannyStatus>('danny/play', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -46,6 +47,18 @@ export default class Home extends Component<
       }),
     }).then((danny) => {
       this.setState({ danny });
+    });
+  }
+
+  stopDanny() {
+    Api.invoke<DannyStatus>('danny/stop', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        sessionId: this.state.session.id,
+      }),
     });
   }
 

@@ -12,7 +12,7 @@ export class SessionManager {
     adminSession.isAdmin = true;
   }
 
-  retrieveSession(id: string) {
+  findSession(id: string) {
     return this.sessions.find((session) => session.id === id);
   }
 

@@ -5,7 +5,7 @@ import { sessionManager } from '../../../../api/session-manager';
 export default function handler(req, res) {
   if (req.method === 'GET') {
     const sessionId = req.query.id;
-    const session = sessionManager.retrieveSession(sessionId);
+    const session = sessionManager.findSession(sessionId);
 
     if (session) {
       res.status(200).send(session);
