@@ -73,7 +73,8 @@ export default class Home extends Component<
     const dannyStatus = this.state.danny;
 
     const output =
-      dannyStatus?.isBusy && dannyStatus.currentSessionId !== session.id ? (
+      true ||
+      (dannyStatus?.isBusy && dannyStatus.currentSessionId !== session.id) ? (
         <p>
           Sorry, Danny is currently being used by someone else. Please try again
           later.
